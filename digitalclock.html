@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital-Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: darkslategray;
+            color: wheat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: 'Courier New', Courier, monospace;
+
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5rem;
+
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+
+        }
+
+        #time {
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 20vh;
+            margin-left: 20vh;
+            border: 5px solid wheat;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <h1>Digital Clock</h1>
+        <div id="time"></div>
+    </div>
+
+    <script>
+
+        const timeElement = document.querySelector('#time');
+
+        setInterval(() => {
+            let currentTime = new Date()
+            let hours = currentTime.getHours()
+            let minutes = currentTime.getMinutes()
+            let seconds = currentTime.getSeconds()
+            let ampm = hours >= 12 ? 'PM' : 'AM'
+            hours = hours < 10 ? '0' + hours : hours
+            minutes = minutes < 10 ? '0' + minutes : minutes
+            seconds = seconds < 10 ? '0' + seconds : seconds
+            timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`
+        }, 1000)
+
+    </script>
+</body>
+
+</html>
